@@ -4,8 +4,7 @@
 // @version      2026-04-15
 // @description  try to take over the world!
 // @author       You
-// @match        https://opensearch.dev.bip.va.gov/*
-// @match        https://opensearch.stage.bip.va.gov/*
+// @match        *://*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=tampermonkey.net
 // @grant        GM_xmlhttpRequest
 // @grant        GM_addStyle
@@ -13,6 +12,11 @@
 
 (function() {
     'use strict';
+
+    if(window.location.hostname.startsWith('opensearch.') == false){ //Only apply the script to subdomains starting with opensearch
+       // console.log("Hostname is " + window.location.hostname);
+        return;
+    }
 
      const LIGHT_THEME_URL = 'https://cdn.jsdelivr.net/gh/Pasquale-Perilli/light-themes@master/opensearch/eui_theme_light.css';
 
